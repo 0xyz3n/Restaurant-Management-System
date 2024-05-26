@@ -8,6 +8,8 @@ java Main
 ```
 
 
+## Todo :
+
 - [x] Admin login at start(uname & pass is set in the program but can be changed later)
 - [ ] Ability to add & remove staff (amdin only)
 - [ ] Store & view staff info (admin only)
