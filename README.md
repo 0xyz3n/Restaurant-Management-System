@@ -20,4 +20,4 @@ java Main
 - [x] Seperate sandbox cashier mode for making bill. ( cannot access admin features & can exit this mode only through admin pass)
 
 
-#########NEVER SETTLE
+###### NEVER SETTLE
