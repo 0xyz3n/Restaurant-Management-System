@@ -44,7 +44,7 @@ public class Admin {
             System.out.println("11: Add dishes.");
             System.out.println("12: Remove dishes");
             System.out.println("13: Enter cashier mode.");
-            System.out.println("14: View Bills.");
+            System.out.println("14: View Previous bill(s).");
             System.out.println("15: Exit.\n\n");
 
             try {

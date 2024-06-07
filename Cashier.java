@@ -8,6 +8,7 @@ public class Cashier {
         while (true) {
             System.out.println("1: Make bills");
             System.out.println("2: Exit");
+            System.out.print("\nEnter your choice : ");
             int ch = Integer.parseInt(Main.in.nextLine());
 
             if (ch == 1) {
@@ -41,9 +42,9 @@ public class Cashier {
         int di = -1;
         int qty = -1;
 
-        ArrayList<Integer> d = new ArrayList<>();
-        ArrayList<Integer> q = new ArrayList<>();
-        ArrayList<Double> v = new ArrayList<>();
+        ArrayList<Integer> dish = new ArrayList<>();
+        ArrayList<Integer> qnty = new ArrayList<>();
+        ArrayList<Double> values = new ArrayList<>();
         int c = 0; // counter variable
         boolean b = false;
 
@@ -55,12 +56,12 @@ public class Cashier {
                 un = Main.in.nextLine();
                 for (int i = 0; i < un.length(); i++) {
                     if (!Character.isLetter(un.charAt(i))) {
-                         System.out.println("Name cannot contain special characters or numbers.");
-                         b = true;
-                         break;  
-                    } 
+                        System.out.println("Name cannot contain special characters or numbers.");
+                        b = true;
+                        break;
+                    }
                 }
-                if(b)
+                if (b)
                     continue;
 
                 break;
@@ -103,15 +104,15 @@ public class Cashier {
                             try {
                                 System.out.print("Enter quantity : ");
                                 qty = Integer.parseInt(Main.in.nextLine());
-                                if(qty <= 0 || qty > 100000) {
+                                if (qty <= 0 || qty > 100000) {
                                     System.out.println("Invalid Quantity!");
                                     continue;
                                 }
-                                d.add(di);
-                q.add(qty);
-                v.add(Menu.price.get(di) * qty);
-                ttl += Menu.price.get(di) * qty;
-                c++;
+                                dish.add(di);
+                                qnty.add(qty);
+                                values.add(Menu.price.get(di) * qty);
+                                ttl += Menu.price.get(di) * qty;
+                                c++;
                             } catch (Exception e) {
                                 System.out.println("Error! Please try again.");
                                 continue;
@@ -124,18 +125,20 @@ public class Cashier {
                     System.out.println("Error ! Try again.");
                     continue;
                 }
-                
+
             }
 
-            while(true) {
+            while (true) {
                 System.out.print("Enter coupon code (if any) [Enter \"NIL\" if no there is no coupon from user] : ");
                 String s = Main.in.nextLine();
 
-                if(Menu.coupon.size() == 0) { break; }
+                if (Menu.coupon.size() == 0) {
+                    break;
+                }
 
-                if(Menu.coupon.contains(s.toLowerCase())) {
-                    double disc_factor = (1.0 - (Menu.coupon_disc.get(Menu.coupon.indexOf(s))/100.0));
-                    if(ttl * disc_factor >= 0.0) {
+                if (Menu.coupon.contains(s.toLowerCase())) {
+                    double disc_factor = (1.0 - (Menu.coupon_disc.get(Menu.coupon.indexOf(s)) / 100.0));
+                    if (ttl * disc_factor >= 0.0) {
                         ttl *= disc_factor;
                         int idx2 = Menu.coupon.indexOf(s.toLowerCase());
                         Menu.coupon.remove(idx2);
@@ -144,7 +147,7 @@ public class Cashier {
                     } else {
                         System.out.println("Couldn't apply coupon code.");
                     }
-                } else if(s.equals("NIL")){
+                } else if (s.equals("NIL")) {
                     break;
                 } else {
                     System.out.println("Invalid coupon code! Please try again.");
@@ -156,9 +159,9 @@ public class Cashier {
                 int idx = Bills.ph.indexOf(p);
                 Bills.lp.set(idx, Bills.lp.get(idx) + 100);
                 if (Bills.lp.get(idx) >= 1000) {
-                    if((ttl * 0.9) >= 0.0) {
+                    if ((ttl * 0.9) >= 0.0) {
                         ttl *= 0.9; // 10% discount for loyal customers :)
-                        Bills.lp.set(idx , Bills.lp.get(idx) - 1000);
+                        Bills.lp.set(idx, Bills.lp.get(idx) - 1000);
                         lpu = true;
                     }
                 }
@@ -171,11 +174,11 @@ public class Cashier {
 
             t = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
 
-            Bills.bills.add(new Bills.Bill(un, p, dt, t, ttl, lpu , cpu, d, q, v));
+            Bills.bills.add(new Bills.Bill(un, p, dt, t, ttl, lpu, cpu, dish, qnty, values));
 
-            d.clear();
-            q.clear();
-            v.clear();
+            dish.clear();
+            qnty.clear();
+            values.clear();
             un = "";
             p = -1l;
             ttl = 0.0;
