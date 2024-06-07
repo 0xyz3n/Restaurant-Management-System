@@ -37,6 +37,7 @@ public class Login {
                         }
 
                         Admin.uname = s;
+                        break;
                     } catch (Exception e) {
                         // TODO: handle exception
                         System.out.println("Error! Please try again!");
@@ -77,6 +78,7 @@ public class Login {
                         }
 
                         Admin.pass = s;
+                        break;
                     } catch (Exception e) {
                         // TODO: handle exception
                         System.out.println("Error! Please try again!");
