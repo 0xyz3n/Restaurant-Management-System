@@ -46,6 +46,10 @@ public class Login {
                 }
             }
         }
+
+        static String getUsername() {
+            return Admin.uname;
+        }
     }
 
     static class Password {
@@ -133,9 +137,9 @@ public class Login {
         while (true) {
             try {
 
-                System.out.print("Enter admin unsername :");
+                System.out.print("Enter admin unsername [default:admin]:");
                 uname = in.next() + in.nextLine();
-                System.out.print("Enter password :");
+                System.out.print("Enter password [default:admin]:");
                 pass = in.next() + in.nextLine();
 
                 if (!Admin.uname.equals(uname)) {
@@ -147,7 +151,8 @@ public class Login {
                 if (!Admin.pass.equals(pass)) {
                     System.out.println("Wrong password !");
                     if (!Password.sanityChecks(pass))
-                        System.out.println("[WARNING] : Password may only contain alphanumeric characters , numbers or special characters.");
+                        System.out.println(
+                                "[WARNING] : Password may only contain alphanumeric characters , numbers or special characters.");
 
                 }
 

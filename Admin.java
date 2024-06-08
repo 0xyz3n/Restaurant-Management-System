@@ -1,3 +1,5 @@
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class Admin {
     static String Rname = null;
@@ -31,6 +33,18 @@ public class Admin {
     public static void adminPanel() {
         int ch = -1;
         while (true) {
+            GregorianCalendar time = new GregorianCalendar();
+            int hour = time.get(Calendar.HOUR_OF_DAY);
+            if (hour < 12)
+                System.out.print("Good morning ! ");
+            else if (hour < 17 && !(hour == 12))
+                System.out.print("good afternoon ! ");
+            else if (hour == 12)
+                System.out.print("Good noon ! ");
+            else
+                System.out.print("Good Evening ");
+
+            System.out.println(Login.UserName.getUsername() + "!");
             System.out.println("\n\n1: Change Restraunt Name.");
             System.out.println("2: Change Admin Username.");
             System.out.println("3: Change Admin Password.");
@@ -107,7 +121,5 @@ public class Admin {
             }
         }
     }
-
-    
 
 }

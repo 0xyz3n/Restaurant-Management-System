@@ -158,21 +158,21 @@ public class Staff {
                 while (true) {
                     try {
                         System.out.print("\nEnter age :");
-                    arr[1] = Main.in.nextLine();
-                    // Will trigger catch block if illegal(age ∉ Z) value is entered
-                    if (Integer.parseInt(arr[1]) < 18) {
-                        System.out.println("\n\nSay \"NO\" to child labour.\n");
-                        continue;
-                    }
-                    if (Integer.parseInt(arr[1]) > 90) {
-                        System.out.println("\nInvalid age!\n");
-                        continue;
-                    }
+                        arr[1] = Main.in.nextLine();
+                        // Will trigger catch block if illegal(age ∉ Z) value is entered
+                        if (Integer.parseInt(arr[1]) < 18) {
+                            System.out.println("\n\nSay \"NO\" to child labour.\n");
+                            continue;
+                        }
+                        if (Integer.parseInt(arr[1]) > 90) {
+                            System.out.println("\nInvalid age!\n");
+                            continue;
+                        }
 
                     } catch (Exception e) {
                         System.out.println("\nError ! Please try again.");
                     }
-                    
+
                     break;
                 }
 

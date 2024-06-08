@@ -23,7 +23,7 @@ public class Menu {
             if (s.length() > 10) {
                 System.out.println("Coupon length exceeded 10! Enter again.");
                 continue;
-            }else if(coupon.contains(s)) {
+            } else if (coupon.contains(s)) {
                 System.out.println("Coupon already present!");
                 continue;
             }
@@ -66,7 +66,7 @@ public class Menu {
                 System.out.print("Enter dish name :");
                 d = Main.in.nextLine();
 
-                if(dish.contains(d)) {
+                if (dish.contains(d)) {
                     System.out.println("Dish already present.Enter a new one!");
                     continue;
                 }
@@ -79,11 +79,11 @@ public class Menu {
                     continue;
                 }
 
-                if(d.length() + 10 > mxD) {
+                if (d.length() + 10 > mxD) {
                     mxD = d.length() + 10;
                 }
 
-                if(Double.toString(p).length() + 10 > mxP) {
+                if (Double.toString(p).length() + 10 > mxP) {
                     mxP = Double.toString(p).length() + 10;
                 }
 
@@ -92,7 +92,7 @@ public class Menu {
 
                 break;
             } catch (Exception e) {
-                //System.out.println(e.getMessage());
+                // System.out.println(e.getMessage());
                 System.out.println("Error! Try again");
                 continue;
             }
@@ -116,9 +116,9 @@ public class Menu {
                     System.out.println("Invalid ID!");
                     System.out.print("Try again ? (y/n):");
                     char ch = Main.in.nextLine().charAt(0);
-                    if(ch == 'y' || ch == 'Y'){
+                    if (ch == 'y' || ch == 'Y') {
                         continue;
-                    }else if(ch == 'n' || ch == 'N') {
+                    } else if (ch == 'n' || ch == 'N') {
                         break;
                     } else {
                         System.out.println("Error! exitting...");
@@ -143,10 +143,11 @@ public class Menu {
         }
 
         System.out.println("-".repeat(mxI + mxP + mxD));
-        System.out.println(String.format("%-" + mxI + "s%-" + mxD + "s%-" + mxP + "s" , "ID" , "DISH" , "PRICE"));
+        System.out.println(String.format("%-" + mxI + "s%-" + mxD + "s%-" + mxP + "s", "ID", "DISH", "PRICE"));
         System.out.println("-".repeat(mxI + mxP + mxD));
-        for(int i = 0; i < dish.size(); i++)
-            System.out.println(String.format("%-" + mxI + "s%-" + mxD + "s%-" + mxP + "s", Integer.toString(i) , dish.get(i) , price.get(i)));
+        for (int i = 0; i < dish.size(); i++)
+            System.out.println(String.format("%-" + mxI + "s%-" + mxD + "s%-" + mxP + "s", Integer.toString(i),
+                    dish.get(i), price.get(i)));
         System.out.println("-".repeat(mxI + mxP + mxD));
     }
 }
