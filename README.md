@@ -1,4 +1,4 @@
-# -Restaurant-Management-System
+# Restaurant-Management-System
 
 ### How to build
 
