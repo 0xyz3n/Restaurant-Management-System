@@ -89,7 +89,7 @@ public class Bills {
                System.out.println("Invalid SL no.Try again.\n");
                continue;
             } else {
-               bills.get(s + 1).fullBill();
+               bills.get(s - 1).fullBill();
             }
          } catch (Exception e) {
             System.out.println("Error! Please try again.");
