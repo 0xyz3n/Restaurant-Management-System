@@ -161,7 +161,7 @@ public class Staff {
                         arr[1] = Main.in.nextLine();
                         // Will trigger catch block if illegal(age ∉ Z) value is entered
                         if (Integer.parseInt(arr[1]) < 18) {
-                            System.out.println("\n\nSay \"NO\" to child labour.\n");
+                            System.out.println("\n\nNO child labour.\n");
                             continue;
                         }
                         if (Integer.parseInt(arr[1]) > 90) {
