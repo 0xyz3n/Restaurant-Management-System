@@ -136,6 +136,8 @@ public class Cashier {
                 String s = Main.in.nextLine().toLowerCase();
 
                 if (Menu.coupon.contains(s)) {
+                    
+                    // ? System.out.println(Menu.coupon.indexOf(s)); debug
                     double disc_factor = (1.0 - (Menu.coupon_disc.get(Menu.coupon.indexOf(s)) / 100.0));
                     if (ttl * disc_factor >= 0.0) {
                         ttl *= disc_factor;
@@ -146,10 +148,11 @@ public class Cashier {
                     } else {
                         System.out.println("Couldn't apply coupon code.");
                     }
-                } else if (s.equals("NIL")) {
+                } else if (s.equalsIgnoreCase("NIL")) {
                     break;
                 } else {
                     System.out.println("Invalid coupon code! Please try again.");
+                    continue;
                 }
                 break;
             }
