@@ -129,14 +129,13 @@ public class Cashier {
             }
 
             while (true) {
-                System.out.print("Enter coupon code (if any) [Enter \"NIL\" if no there is no coupon from user] : ");
-                String s = Main.in.nextLine();
-
                 if (Menu.coupon.size() == 0) {
                     break;
                 }
+                System.out.print("Enter coupon code (if any) [Enter \"NIL\" if no there is no coupon from user] : ");
+                String s = Main.in.nextLine().toLowerCase();
 
-                if (Menu.coupon.contains(s.toLowerCase())) {
+                if (Menu.coupon.contains(s)) {
                     double disc_factor = (1.0 - (Menu.coupon_disc.get(Menu.coupon.indexOf(s)) / 100.0));
                     if (ttl * disc_factor >= 0.0) {
                         ttl *= disc_factor;
