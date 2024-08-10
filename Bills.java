@@ -8,17 +8,17 @@ public class Bills {
    static ArrayList<Integer> lp = new ArrayList<>();
 
    static class Bill {
-      static String uname;
-      static long ph;
-      static String date;
-      static String time;
-      static double total;
-      static boolean lpa; // ? loyalty pts applied
-      static boolean cpa; // ? coupon applied
+      String uname;
+      long ph;
+      String date;
+      String time;
+      double total;
+      boolean lpa; // ? loyalty pts applied
+      boolean cpa; // ? coupon applied
 
-      static ArrayList<Integer> dishes; // store dish id instead of dish itself
-      static ArrayList<Integer> qty;
-      static ArrayList<Double> value;
+      ArrayList<Integer> dishes; // store dish id instead of dish itself
+      ArrayList<Integer> qty;
+      ArrayList<Double> value;
 
       public Bill(String un, long p, String dt, String t, double ttl, boolean lpu, boolean cpu, ArrayList<Integer> dish,
             ArrayList<Integer> qnty, ArrayList<Double> values) {
@@ -37,7 +37,10 @@ public class Bills {
             mxN = un.length() + 10;
       }
 
-      static void fullBill() {
+      void fullBill() {
+          /* null pointer exception possible - intentionally unhandled -
+           * reason : dont bypass login
+             */
          int padding = ((Menu.mxD + Menu.mxP + 40) - Admin.Rname.length()) >> 1;
          System.out.println("\n\n" + "-".repeat(Menu.mxD + 50));
          System.out.println(String.format("%" + padding + "s", Admin.Rname));
@@ -47,7 +50,7 @@ public class Bills {
          System.out.println("Time : " + time);
          System.out.println("Loyalty points : " + lp.get(Bills.ph.indexOf(ph)));
 
-         System.out.println("\n" + "-".repeat(Menu.mxD + 40));
+         System.out.println("\n" + "-".repeat(Menu.mxD + 50));
          System.out.println(String.format("%-10s%-" + Menu.mxD + "s%-" + Menu.mxP + "s%-10s%-20s", "SL", "DISH",
                "PRICE", "QTY", "VALUE"));
          System.out.println("-".repeat(Menu.mxD + 50));
@@ -69,12 +72,12 @@ public class Bills {
 
    static void viewBills() {
       if (bills.isEmpty()) {
-         System.out.println("\n\nNo bills [-_-]");
+         System.out.println("\nNo bills [-_-]");
          return;
       }
       System.out.println(
             "\n\n" + String.format("%-5s%-" + mxN + "s%-20s%-10s%-10s", "SL", "NAME", "PHONE", "TOTAL", "LOYALTY PTS"));
-      System.out.println("-".repeat(mxN + 50));
+      System.out.println("-".repeat(mxN + 40));
       for (int i = 0; i < bills.size(); i++)
          System.out.println(String.format("%-5s%-" + mxN + "s%-20s%-10s%-10s", (i + 1), bills.get(i).uname,
                bills.get(i).ph, bills.get(i).total, lp.get(ph.indexOf(bills.get(i).ph))));
@@ -85,6 +88,7 @@ public class Bills {
             int s = Integer.parseInt(Main.in.nextLine());
             if (s == -1) {
                System.out.println("Exitting...");
+               break;
             } else if (s < -1 || s == 0 || s > bills.size()) {
                System.out.println("Invalid SL no.Try again.\n");
                continue;
