@@ -100,6 +100,10 @@ public class Staff {
     }
 
     static void changePosition() {
+        if (uid.isEmpty()) {
+            System.out.println("\nNo staff ! [-_-]\n");
+            return;
+        }
         viewStaff();
         System.out.println("\nUse the above data for reference\n");
 

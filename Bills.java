@@ -74,7 +74,7 @@ public class Bills {
       }
       System.out.println(
             "\n\n" + String.format("%-5s%-" + mxN + "s%-20s%-10s%-10s", "SL", "NAME", "PHONE", "TOTAL", "LOYALTY PTS"));
-      System.out.println("-".repeat(mxN + 40));
+      System.out.println("-".repeat(mxN + 50));
       for (int i = 0; i < bills.size(); i++)
          System.out.println(String.format("%-5s%-" + mxN + "s%-20s%-10s%-10s", (i + 1), bills.get(i).uname,
                bills.get(i).ph, bills.get(i).total, lp.get(ph.indexOf(bills.get(i).ph))));
