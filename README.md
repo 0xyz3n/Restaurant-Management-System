@@ -1,5 +1,7 @@
 # Restaurant-Management-System
 
+## School Project
+
 ### How to build
 
 ```
